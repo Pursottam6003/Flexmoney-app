@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.html {
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.yogagirl {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  top: 60%;
+  left: 90%;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+.devi {
+  position: relative;
+  background-image: url("./assets/img/girl_bg.png");
+  background-repeat: no-repeat;
+  width: 200px;
+  z-index: 1;
+  height: 100%;
+  animation: yogagirl 5s linear alternate infinite;
+}
+
+@keyframes yogagirl {
+  from {
+    bottom: 5%;
+  }
+
+  to {
+    bottom: 35%;
+  }
+}
+
+
+.yogdevifooter {
+  position: absolute;
+  bottom: 15%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAAYCAYAAACP6qOQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAgRJREFUeNrsnN9HQ2EYx88qY8QYMSJiiWWMERER0f26SFf9G9EfkP6Grke0u6KrbqKI0dVhxEgxjYjoKuv76HnXac6pw862c959P3zth3NsO+/72fue5z1bqtvtOoSQwZjiISCEIhFCkQihSISQHjNxe0P1+hlbxXKq1R2KRHoUkOw/2+SQxQhe6wNxQ2zXRN7ZNBRplALkkXkfKbL62FBGphP+mR+RToCURr5P5J5CUqQ0UlI5RJJKnxSVCW7nBY1hPeR+beRZpWrq/bYK11ZBSUJFyqgUZb0t6fQpx+aMnLxG2AjYxlXBGhqR7IEixQ+ZVm0jcoa6ihTZv2NFUbPlee5NpbpEaiqa1cS5/C1TtBPkBTlH9ilRYpAp9SZyjDwhN8geR6TxcO1EU/Ei42dNIwWNU45Io6XG/mcVUqy449Ru9BwiS8gR0mI/TCRSar9AdpEVm9sx7sUGqf4caBZ1elBxfqp2WfbV2I063urdrcpkPUkqf7c03ilfQQsQZt1ozvleL5GSeJr9emjt0FFRzLqSiONOijRJFyloxApaszCLsX6Lsn5XN0wyflc19C/Ghr1MiSJZhlnLEK5CbJ9xfpfXvZcNzSLLPvuYEfAvkaM833BDiNB/DLxfNN5R45XnnhRpWCfGDc/jBg8JCUuK/9lAyODwh32EUCRCKBIh1vAlwAC88WnR7g3cuQAAAABJRU5ErkJggg==) center no-repeat;
+  width: 210px;
+  height: 20px;
+}
+
+.numberCircle {
+  border-radius: 50%;
+  width: 28px;
+  height: 31px;
+  padding: 3px;
+  background: #009DE9;
+  border: 2px solid #FFFF;
+  color: #FFFF;
+  text-align: center;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
