@@ -1,20 +1,32 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container, Collapse, Alert, IconButton } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CloseIcon from '@mui/icons-material/Close';
-import { useUser } from '../contexts/user';
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  CssBaseline,
+  TextField,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  Collapse,
+  Alert,
+  IconButton,
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CloseIcon from "@mui/icons-material/Close";
+import { useUser } from "../contexts/user";
 
 const theme = createTheme();
 
 export default function LogIn() {
   const history = useNavigate();
   const [formData, setFormData] = useState({
-    "email": "demo@123.com",
-    "password": "demo"
+    email: "",
+    password: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
 
   const { profile } = useUser();
 
@@ -22,7 +34,7 @@ export default function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
+    setErrorMsg("");
 
     // call login function from user context
     try {
@@ -37,45 +49,48 @@ export default function LogIn() {
   };
 
   const handleChange = (name, value) => {
-    setFormData(prevData => ({ ...prevData, [name]: value }));
-  }
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   useEffect(() => {
-    if (!!profile) history('/');
-  })
-
-
-
+    if (!!profile) history("/profile");
+  });
 
   return (
-    <ThemeProvider theme={theme} >
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
             my: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <Box sx={{ mt: 1 }}>
-            <img width="100" height="100" src="https://img.icons8.com/plasticine/100/guru.png" alt="guru" />          </Box>
+            <img
+              width="100"
+              height="100"
+              src="https://img.icons8.com/plasticine/100/guru.png"
+              alt="guru"
+            />{" "}
+          </Box>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <Collapse in={errorMsg?.length !== 0}>
               <Alert
-                severity='error'
-                variant='outlined'
+                severity="error"
+                variant="outlined"
                 action={
                   <IconButton
                     aria-label="close"
                     color="inherit"
                     size="small"
                     onClick={() => {
-                      setErrorMsg('');
+                      setErrorMsg("");
                     }}
                   >
                     <CloseIcon fontSize="inherit" />
@@ -94,7 +109,7 @@ export default function LogIn() {
               id="email"
               label="Email Address"
               name="email"
-              value={formData.email || ''}
+              value={formData.email || ""}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
               autoComplete="email"
               autoFocus
@@ -104,7 +119,7 @@ export default function LogIn() {
               required
               fullWidth
               name="password"
-              value={formData.password || ''}
+              value={formData.password || ""}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
               label="Password"
               type="password"
@@ -134,6 +149,6 @@ export default function LogIn() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 }

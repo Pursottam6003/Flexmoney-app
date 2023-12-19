@@ -10,12 +10,13 @@ payments.route('/payments/pay').post((req, res) => {
     const userId = results[0].id_text;
     // handle payment
 
+
     // store payment in database
     const db = getDb();
-    const insertQuery = "INSERT INTO payments (userId, transactionId, amount, paymentDate, status) VALUES (?, ?, ?)";
-    const paymentDate = new Date();
-    const transactionId = `${userId}-${paymentDate.getTime()}`;
-    const amount = req.body.amount;
+    const insertQuery = "INSERT INTO payments (userId, transactionId, amount, paymentDate, status) VALUES (?, ?, ?, ?, ?)";
+    const paymentDate = new Date().getTime();
+    const transactionId = `${userId}-${paymentDate}`;
+    const amount = req.body.amount || 500;
     const status = 'success';
 
     db.query(insertQuery, [userId, transactionId, amount, paymentDate, status], (err, result) => {

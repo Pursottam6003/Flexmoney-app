@@ -5,54 +5,58 @@ import axios from "axios";
 const Context = createContext();
 
 const UserProvider = ({ children }) => {
-    const { checkAuth, loading, error, isAdmin, profile } = useAuth();
+  const { checkAuth, loading, error, isAdmin, profile } = useAuth();
 
-    const login = async ({ email, password }) => {
-        try {
-            const res = await axios.post('/users/login', { email, password })
-            if (res.status !== 200) {
-                throw new Error(res.statusText);
-            } else {
-                checkAuth();
-            }
-        } catch (err) {
-            throw err;
-        }
+  const login = async ({ email, password }) => {
+    try {
+      const res = await axios.post("/users/login", { email, password });
+      if (res.status !== 200) {
+        throw new Error(res.statusText);
+      } else {
+        checkAuth();
+      }
+    } catch (err) {
+      throw err;
     }
+  };
 
-    const enroll = async (data) => {
-
-        try {
-            const res = await axios.post('users/profile', data)
-            if (res.status !== 200) {
-                throw new Error(res.statusText);
-            } else {
-                checkAuth();
-            }
-        }
-        catch (err) {
-            throw err;
-        }
+  const enroll = async (data) => {
+    try {
+      const res = await axios.post("users/profile", data);
+      if (res.status !== 200) {
+        throw new Error(res.statusText);
+      }
+    } catch (err) {
+      throw err;
     }
+  };
 
-    const logout = () => {
-        axios.post('/users/logout', { withCredentials: true }).then(res => {
-            if (res.status === 200) {
-                checkAuth();
-            }
-        }).catch(err => {
-            throw err;
-        })
-    }
+  const logout = () => {
+    axios
+      .post("/users/logout", { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          checkAuth();
+        }
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
 
-    const exposed = { profile, isAdmin, loading, checkAuth, error, login, logout, enroll }
+  const exposed = {
+    profile,
+    isAdmin,
+    loading,
+    checkAuth,
+    error,
+    login,
+    logout,
+    enroll,
+  };
 
-    return (
-        <Context.Provider value={exposed}>
-            {children}
-        </Context.Provider>
-    )
-}
+  return <Context.Provider value={exposed}>{children}</Context.Provider>;
+};
 
 export const useUser = () => useContext(Context);
 export default UserProvider;

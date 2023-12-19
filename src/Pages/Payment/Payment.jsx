@@ -36,10 +36,10 @@ export default function EnrolmentForm() {
             setPaid(false);
             return;
           }
-          const lastPaymentDate = res.data.payments[0].paymentDate;
-          const currentMonth = new Date().getMonth();
-          const lastPaymentMonth = lastPaymentDate.getMonth();
+          const lastPaymentTime = res.data.payments[0].paymentDate;
 
+          let lastPaymentMonth = new Date(Number(lastPaymentTime)).getMonth();
+          let currentMonth = new Date().getMonth();
           if (currentMonth === lastPaymentMonth) {
             setPaid(true);
           } else {
@@ -98,14 +98,16 @@ export default function EnrolmentForm() {
                   ? "You have made the payment for this month"
                   : "Complete payment Rs 500 to confirm your subscription for this month"}
               </Alert>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Confirm payment
-              </Button>
+              {!paid && (
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Confirm payment
+                </Button>
+              )}
             </Box>
           </Paper>
         </Container>

@@ -3,7 +3,6 @@ import {
   Grid,
   Typography,
   TextField,
-  Autocomplete,
   Box,
   Button,
   Container,
@@ -14,11 +13,11 @@ import { Alert, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
-import { BATCH } from "../../assets/data";
-import cx from "classnames";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/user";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const theme = createTheme();
 
@@ -114,10 +113,8 @@ export default function EnrolmentForm() {
 
     // Call the enroll function from user context
     try {
-      const res = await enroll(formData);
-      if (res.status === 200) {
-        return history("/payment");
-      }
+      await enroll(formData);
+      return history("/payment");
     } catch (err) {
       if (err.response) {
         setErrorMsg(err.response.data.message || err.message);
@@ -374,30 +371,30 @@ export default function EnrolmentForm() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Autocomplete
-                    id="batch"
-                    options={BATCH}
-                    isOptionEqualToValue={(option, value) =>
-                      option.label === value.label
+                  <Select
+                    fullWidth
+                    name="batch"
+                    required
+                    value={formData.batch || ""}
+                    onChange={(e) =>
+                      handleInputChange(e.target.name, e.target.value)
                     }
-                    onInputChange={(e, val) => {
-                      handleInputChange("batch", val);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        autoComplete="title"
-                        name="batch"
-                        required
-                        value={formData.batch || ""}
-                        onChange={(e) =>
-                          handleInputChange(e.target.name, e.target.value)
-                        }
-                        variant="standard"
-                        label="Select Batch"
-                      />
-                    )}
-                  />
+                    variant="standard"
+                    label="Select Batch"
+                  >
+                    <MenuItem value={"Morning Session: 06:00 to 7:00 AM"}>
+                      Morning Session: 06:00 to 7:00 AM
+                    </MenuItem>
+                    <MenuItem value={"Morning Session: 07:00 to 8:00 AM"}>
+                      Morning Session: 06:00 to 7:00 AM
+                    </MenuItem>
+                    <MenuItem value={"Morning Session: 09:00 to 10:00 AM"}>
+                      Morning Session: 09:00 to 10:00 AM
+                    </MenuItem>
+                    <MenuItem value={"Evening Session: 05:00 to 6:00 PM"}>
+                      Evening Session: 05:00 to 6:00 PM
+                    </MenuItem>
+                  </Select>
                 </Grid>
                 <Grid item xs={12}>
                   <Checkbox
