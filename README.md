@@ -32,8 +32,10 @@ Backend hosted at: https://onrender.com
 3. To establish a seamless connection between the frontend and backend, an Entity-Relationship diagram needs to be created. This diagram aids in comprehending the relationships between entities and serves as a guide for developing APIs to facilitate communication between the frontend and backend.
 
 ## Demo Video 
+<!-- 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VL1CYSIhGP8?si=5ZSts_-oZb5Zp1VX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VL1CYSIhGP8?si=5ZSts_-oZb5Zp1VX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://youtu.be/VL1CYSIhGP8?si=kMNYL7MBOkcsC-47
 
 ### Technologies Used
 * ReactJS
