@@ -21,9 +21,11 @@ same month they need to be in the same batch.
 ### Links
 Frontend hosted at: https://pursottam-yoga-app.netlify.app/
 
-Note: API Integration with frontend is completed but i am unable to host on servers
+Note: API Integration with frontend is completed but due to some issue with the backend server it is not working properly.
 
-Backend hosted at: https://onrender.com 
+Backend hosted at: https://flexmoney-app-production.up.railway.app/
+
+![Alt text](public/image12.png)
 ## Solution Approach
 1. The initial step involves creating a form with an aesthetically pleasing UI for uploading user details.
 
@@ -32,8 +34,7 @@ Backend hosted at: https://onrender.com
 3. To establish a seamless connection between the frontend and backend, an Entity-Relationship diagram needs to be created. This diagram aids in comprehending the relationships between entities and serves as a guide for developing APIs to facilitate communication between the frontend and backend.
 
 ## Demo Video 
-<!-- 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VL1CYSIhGP8?si=5ZSts_-oZb5Zp1VX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+
 
 https://youtu.be/VL1CYSIhGP8?si=kMNYL7MBOkcsC-47
 
