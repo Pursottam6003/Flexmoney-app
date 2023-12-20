@@ -7,12 +7,14 @@ var _db;
 // a: https://stackoverflow.com/questions/13394140/using-environment-variables-in-node-js-applications
 module.exports = {
   connectToServer: function (callback) {
-    const db = mysql.createConnection({
-      host: 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_USER_PASSWORD || 'rootpass',
-      database: process.env.DB_NAME || 'alumniDatabase'
-    });
+    // const db = mysql.createConnection({
+    //   host: 'localhost',
+    //   user: process.env.DB_USER || 'root',
+    //   password: process.env.DB_USER_PASSWORD || 'rootpass',
+    //   database: process.env.DB_NAME || 'alumniDatabase'
+    // });
+
+    const db = mysql.createConnection(process.env.DB_URL || '');
 
     db.connect(function (err) {
       if (err) {
