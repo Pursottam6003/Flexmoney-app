@@ -7,6 +7,22 @@ const expiresInMin = 60;
 
 const getDb = require('../db/conn').getDb;
 
+function generateRandomInteger(length) {
+  const min = Math.pow(10, length - 1);
+  const max = Math.pow(10, length) - 1;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateRandomId(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+  return result;
+}
 users.route('/users/register').post((req, res) => {
   const db = getDb();
   const { email, password, confirmPassword } = req.body;
@@ -36,7 +52,10 @@ users.route('/users/register').post((req, res) => {
           return res.status(400).send({ message: 'Invalid API usage' });
         }
 
-        const insertQuery = "INSERT INTO users (id, email, password) VALUES (UNHEX(REPLACE(UUID(),'-','')), ?, ?)";
+        // const insertQuery = "INSERT INTO users (id, email, password) VALUES (UNHEX(REPLACE(UUID(),'-','')), ?, ?)";
+        const randomId = generateRandomInteger(10);
+        const randIdtext = generateRandomInteger(10);
+        const insertQuery = "INSERT INTO users (id,id_text,email,password) VALUES ('" + randomId + "','" + randIdtext + "',?,?)";
         db.query(insertQuery, [email, hashedPassword], (err, result) => {
           if (err) throw err;
           console.log(result);

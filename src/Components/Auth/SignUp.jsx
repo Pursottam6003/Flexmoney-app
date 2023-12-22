@@ -18,7 +18,7 @@ export default function SignUp() {
 
     const user = formData;
 
-    axios.post('http://localhost:5000/users/register', user).then((response) => {
+    axios.post('/users/register', user).then((response) => {
       console.log(response);
       if (response.status === 200)
         return history('/login');

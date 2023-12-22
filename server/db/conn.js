@@ -8,10 +8,10 @@ var _db;
 module.exports = {
   connectToServer: function (callback) {
     // const db = mysql.createConnection({
-    //   host: 'localhost',
+    //   host: process.env.DB_HOST || 'localhost',
     //   user: process.env.DB_USER || 'root',
-    //   password: process.env.DB_USER_PASSWORD || 'rootpass',
-    //   database: process.env.DB_NAME || 'alumniDatabase'
+    //   password: process.env.DB_USER_PASSWORD || 'Rahul@12345678',
+    //   database: process.env.DB_NAME || 'yogaDatabase'
     // });
 
     const db = mysql.createConnection(process.env.DB_URL || '');
